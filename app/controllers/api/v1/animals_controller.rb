@@ -1,6 +1,8 @@
 module Api
   module V1
     class AnimalsController < ApplicationController
+      before_action :authorize_request
+
       def index
         animals = Animal.order('created_at DESC')
         render json: { status: 'SUCESS', data: animals }, status: :ok
